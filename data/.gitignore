@@ -2,3 +2,9 @@
 /config
 /embeddings
 /models
+/config/auto/config_states
+/config/comfy/input/**
+!/config/**
+/config/auto/scripts
+/config/auto/extensions
+!/config/comfy/custom_nodes/**
