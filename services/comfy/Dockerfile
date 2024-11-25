@@ -10,13 +10,15 @@ RUN --mount=type=cache,target=/root/.cache/pip \
   cd ${ROOT} && \
   git checkout master && \
   git reset --hard 276f8fce9f5a80b500947fb5745a4dde9e84622d && \
-  pip install -r requirements.txt
+  pip install -r requirements.txt && \
+  pip install deepdiff watchdog pandas piexif insightface
 
 WORKDIR ${ROOT}
 COPY . /docker/
 RUN chmod u+x /docker/entrypoint.sh && cp /docker/extra_model_paths.yaml ${ROOT}
 
 ENV NVIDIA_VISIBLE_DEVICES=all PYTHONPATH="${PYTHONPATH}:${PWD}" CLI_ARGS=""
+
 EXPOSE 7860
 ENTRYPOINT ["/docker/entrypoint.sh"]
 CMD python -u main.py --listen --port 7860 ${CLI_ARGS}

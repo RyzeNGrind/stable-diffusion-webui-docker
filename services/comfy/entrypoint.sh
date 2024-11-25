@@ -22,6 +22,9 @@ for to_path in "${!MOUNTS[@]}"; do
   echo Mounted $(basename "${from_path}")
 done
 
+# New command to recursively install requirements
+find /data/config/comfy/custom_nodes -type f -name 'requirements.txt' -exec pip install -r {} \;
+
 if [ -f "/data/config/comfy/startup.sh" ]; then
   pushd ${ROOT}
   . /data/config/comfy/startup.sh
