@@ -22,7 +22,10 @@ RUN --mount=type=cache,target=/root/.cache/pip \
 cd ${ROOT}/custom_nodes && \
 git clone https://github.com/ltdrdata/ComfyUI-Manager.git && \
 cd ComfyUI-Manager && \
-pip install -r requirements.txt
+pip install -r requirements.txt 
+
+#Fix failed comfyUI node imports :ComfyUI_LayerStyle, ComfyUI-Impact-Pack, Comfyui-ergouzi-Nodes, ComfyUI_Fill-Nodes
+RUN apt-get update && apt-get install -y libgl1-mesa-glx libgl1-mesa-dri libegl1-mesa libgbm1 libwayland-egl1 libx11-xcb-dev libxcb-dri2-0 libxcb-glx0 libxcb-icccm4 libxcb-image0 libxcb-keysyms1 libxcb-randr0 libxcb-render0 libxcb-shape0 libxcb-sync1 libxcb-util1 libxcb-xfixes0 libxcb-xkb1 && apt-get clean
 
 ENV NVIDIA_VISIBLE_DEVICES=all PYTHONPATH="${PYTHONPATH}:${PWD}" CLI_ARGS=""
 
