@@ -45,7 +45,7 @@ services:
     <<: *base_service
     profiles: ["comfy"]
     build: ./services/comfy/
-    image: sd-comfy:7
+    image: obeliks/comfyui:latest #default sd-comfy:7 #mzakel/sd-comfy:0.0.4 #alt: aegypius/comfyui:latest
     environment:
       - CLI_ARGS=
 
